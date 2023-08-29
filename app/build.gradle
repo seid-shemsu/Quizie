@@ -3,9 +3,12 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
 }
-def localProperties = new Properties()
-localProperties.load(new FileInputStream(rootProject.file("local.properties")))
-
+String getApiKey() {
+    def propFile = rootProject.file("./local.properties")
+    def properties = new Properties()
+    properties.load(new FileInputStream(propFile))
+    return properties['API_KEY']
+}
 android {
     namespace 'com.seid.quizie'
     compileSdk 33
@@ -18,7 +21,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "KEY", localProperties['KEY']
+        buildConfigField ("String", "API_KEY", getApiKey())
     }
 
     buildTypes {

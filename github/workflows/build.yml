@@ -17,6 +17,6 @@ jobs:
       - name: Update API_KEY from Secrets
         env:
           API_KEY: $
-          run: echo API_KEY=\"$API_KEY\" > ./local.properties
+          run: echo API_KEY=\"API_KEY\" > ./local.properties
       - name: Build Project
         run: ./gradlew assemble
