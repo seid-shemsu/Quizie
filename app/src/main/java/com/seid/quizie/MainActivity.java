@@ -36,9 +36,5 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
         Log.e("key", BuildConfig.API_KEY);
 
-
-
-
-
     }
 }
