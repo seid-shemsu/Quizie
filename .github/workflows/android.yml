@@ -1,0 +1,23 @@
+name: Android CI
+
+on: pull_request
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Update API_KEY from Secrets
+        env:
+          API_KEY: $
+          run: echo API_KEY=\"API_KEY\" > ./local.properties
+      - name: Build Project
+        run: ./gradlew assemble
+
